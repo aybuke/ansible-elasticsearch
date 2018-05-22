@@ -1,0 +1,21 @@
+- hosts: master_nodes
+  become: yes
+  roles:
+    - { role: elasticsearch, es_instance_name: "master", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: "node1, node2, node3", network.host: "_tun0_, _local_", cluster.name: "es-cluster", discovery.zen.ping.multicast.enabled: false,  http.port: 9200, transport.tcp.port: 9300, node.data: false, node.master: true, bootstrap.mlockall: true } }
+  vars:
+    es_major_version: "6.x"
+    es_version: "6.0.0"
+    es_heap_size: "1g"
+    es_cluster_name: "es-cluster"
+
+
+
+- hosts: data_nodes
+  become: yes
+  roles:
+    - { role: elasticsearch, es_instance_name: "node", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: "node4, node5", network.host: "_tun0_, _local_", cluster.name: "es-cluster", discovery.zen.ping.multicast.enabled: false, http.port: 9200, transport.tcp.port: 9300, node.data: true, node.master: false, bootstrap.mlockall: true } }
+  vars:
+    es_major_version: "6.x"
+    es_version: "6.0.0"
+    es_heap_size: "1g"
+    es_cluster_name: "es-cluster"
