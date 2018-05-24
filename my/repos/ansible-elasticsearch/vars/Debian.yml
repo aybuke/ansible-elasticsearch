@@ -1,0 +1,11 @@
+---
+es_package_url: "https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch"
+init_script: "/etc/init.d/elasticsearch"
+es_conf_dir: "/etc/elasticsearch"
+sysd_script: "/usr/lib/systemd/system/elasticsearch.service"
+#add supported features here
+supported_xpack_features: ["alerting","monitoring","graph","security"]
+reserved_xpack_users: ["elastic","kibana","logstash_system"]
+java: "{% if es_java is defined %}{{es_java}}{% else %}openjdk-8-jre-headless{% endif %}"
+default_file: "/etc/default/elasticsearch"
+es_home: "/usr/share/elasticsearch"

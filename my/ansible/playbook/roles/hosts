@@ -1,0 +1,18 @@
+[elasticsearch_master_nodes]
+node1 ansible_host=18.197.34.56
+node2 ansible_host=52.28.191.14
+node3 ansible_host=18.194.251.213
+
+[elasticsearch_data_nodes]
+node4 ansible_host=18.196.254.91
+node5 ansible_host=18.184.181.213
+
+[elasticsearch_master_nodes:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/Users/vngrs/.ssh/id_rsa
+ansible_python_interpreter=/usr/bin/python3
+
+[elasticsearch_data_nodes:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/Users/vngrs/.ssh/id_rsa
+ansible_python_interpreter=/usr/bin/python3
