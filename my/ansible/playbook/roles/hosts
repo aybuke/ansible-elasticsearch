@@ -1,11 +1,12 @@
 [elasticsearch_master_nodes]
-node1 ansible_host=18.197.34.56
-node2 ansible_host=52.28.191.14
-node3 ansible_host=18.194.251.213
+node1 ansible_host=node1ip
+node2 ansible_host=node2ip
+node3 ansible_host=node3ip
 
 [elasticsearch_data_nodes]
-node4 ansible_host=18.196.254.91
-node5 ansible_host=18.184.181.213
+node4 ansible_host=node4ip
+node5 ansible_host=node5ip
+node6 ansible_host=node6ip
 
 [elasticsearch_master_nodes:vars]
 ansible_user=ubuntu

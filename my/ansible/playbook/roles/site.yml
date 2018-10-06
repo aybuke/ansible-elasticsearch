@@ -1,7 +1,7 @@
 - hosts: elasticsearch_master_nodes
   become: yes
   roles:
-    - { role: elasticsearch, es_instance_name: "es-master", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: ["172.31.27.162", "172.31.17.125", "172.31.18.1","172.31.30.143", "172.31.26.215"], cluster.name: "es-cluster",  network.bind_host: "0.0.0.0", network.publish_host: "0.0.0.0", http.port: 9200, transport.tcp.port: 9300, node.data: false, node.master: true } }
+    - { role: elasticsearch, es_instance_name: "es-master", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: ["ips"], cluster.name: "es-cluster",  network.bind_host: "0.0.0.0", network.publish_host: "0.0.0.0", http.port: 9200, transport.tcp.port: 9300, node.data: false, node.master: true } }
   vars:
     es_major_version: "6.x"
     es_version: "6.0.0"
@@ -10,7 +10,7 @@
 - hosts: elasticsearch_data_nodes
   become: yes
   roles:
-    - { role: elasticsearch, es_instance_name: "es-node", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: ["172.31.27.162", "172.31.17.125", "172.31.18.1", "172.31.30.143", "172.31.26.215"], cluster.name: "es-cluster",  network.bind_host: "0.0.0.0", network.publish_host: "0.0.0.0", http.port: 9200, transport.tcp.port: 9300, node.data: true, node.master: false } }
+    - { role: elasticsearch, es_instance_name: "es-node", es_data_dirs: "/opt/elasticsearch/data", es_log_dir: "/opt/elasticsearch/logs", es_config: { discovery.zen.ping.unicast.hosts: ["ips"], cluster.name: "es-cluster",  network.bind_host: "0.0.0.0", network.publish_host: "0.0.0.0", http.port: 9200, transport.tcp.port: 9300, node.data: true, node.master: false } }
   vars:
     es_major_version: "6.x"
     es_version: "6.0.0"

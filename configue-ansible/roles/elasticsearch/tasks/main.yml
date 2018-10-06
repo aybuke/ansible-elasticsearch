@@ -1,0 +1,12 @@
+---
+- name: Backup existing elasticsearch.yml
+  copy:
+    src: '{{ es_config }}'
+    dest: '{{ es_config }}.backup'
+    remote_src: true
+
+- name: Copy elasticsearch.yml file
+  template:
+    src: elasticsearch.yml.j2
+    dest: '{{ es_config }}'
+  notify: restart elasticsearch

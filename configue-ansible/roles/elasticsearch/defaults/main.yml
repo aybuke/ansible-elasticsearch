@@ -1,0 +1,6 @@
+---
+es_config_path: /etc/elasticsearch
+es_config: '{{ es_config_path }}/elasticsearch.yml'
+es_port: 9200
+path_data: /var/lib/elasticsearch
+path_logs: /var/log/elasticsearch

@@ -1,0 +1,13 @@
+cluster.name: {{ es_cluster_name }}
+{% if is_master %}
+node.name: master-{{ groups['masters'].index(inventory_hostname) | int + 1 }}
+{% else %}
+node.name: node-{{ groups['nodes'].index(inventory_hostname) | int + 1 }}
+{% endif %}
+node.master: {{ "true" if is_master else "false" }}
+node.data: {{ "false" if is_master else "true" }}
+path.data: {{ path_data }}
+path.logs: {{ path_logs }}
+network.host: {{ ansible_default_ipv4.address }}
+http.port: {{ es_port }}
+discovery.zen.ping.unicast.hosts: ["{{ node_hosts | list | join ("\",\"") }}"]

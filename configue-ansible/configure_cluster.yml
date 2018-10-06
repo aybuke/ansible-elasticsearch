@@ -1,0 +1,23 @@
+- hosts: masters
+  become: yes
+  vars:
+    es_cluster_name: es-cluster
+    is_master: true
+    node_hosts:
+      - ip1
+      - ip2
+      - ip3
+  roles:
+    - elasticsearch
+
+- hosts: nodes
+  become: yes
+  vars:
+    es_cluster_name: es-cluster
+    is_master: false
+    node_hosts:
+      - ip1
+      - ip2
+      - ip3
+  roles:
+    - elasticsearch
